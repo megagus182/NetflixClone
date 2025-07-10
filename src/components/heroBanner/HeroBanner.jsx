@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroBanner.css';
+import { FaInfoCircle, FaPlayCircle  } from "react-icons/fa";
 
 const HeroBanner = () => {
   return (
@@ -11,8 +12,8 @@ const HeroBanner = () => {
           Un cazador de monstruos mutado lucha por encontrar su lugar en un mundo donde las personas suelen ser más perversas que las bestias.
         </p>
         <div className="hero-buttons">
-          <button className="btn play">▶ Reproducir</button>
-          <button className="btn info">ℹ Más información</button>
+          <button className="btn play"><FaPlayCircle /> Reproducir</button>
+          <button className="btn info"><FaInfoCircle /> Más información</button>
         </div>
       </div>
     </section>

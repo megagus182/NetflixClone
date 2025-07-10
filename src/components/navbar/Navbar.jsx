@@ -1,12 +1,13 @@
 import React from "react";
 import './Navbar.css'
+import { FaRegBell , FaSearch } from 'react-icons/fa';
 
 const Navbar = ()=>{
 
     return(
         <nav className="navbar">
             <div className="navbar-container">
-            <div className="logo">NetflixClone</div>
+            <div className="logo">NETFLIX</div>
             <ul className="nav-links">
                 <li>Inicio</li>
                 <li>Series</li>
@@ -14,10 +15,10 @@ const Navbar = ()=>{
                 <li>Mi lista</li>
             </ul>
             <div className="secondary-nav">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
+                <div><FaSearch/></div>
+                <div>Niños</div>
+                <div><FaRegBell/></div>
+                <div>Perfil</div>
             </div>
             </div>
         </nav>

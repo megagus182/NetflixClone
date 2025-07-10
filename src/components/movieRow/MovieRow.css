@@ -1,0 +1,55 @@
+.movie-row {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 40px;
+  color: white;
+  overflow: hidden;
+}
+
+.movie-row-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.movie-row-scroll {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.scroll-buttons {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-row-scroll {
+  scroll-padding-left: 120px;
+}
