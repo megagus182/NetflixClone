@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./Home.css";
+import React, {useEffect, useState} from 'react';
 import {
-  getNowPlaying,
   getAnimeSeries,
   getKoreanDramas,
   getSpanishSeries,
@@ -9,16 +7,14 @@ import {
   getWomenLedSeries,
   getAmericanDramaSeries,
   getMiniseries,
-  getDocumentaries,
   getEpicWorldsSeries,
-  getRealityShows,
 } from "../../services/tmdb";
-import HeroBanner from "../../components/heroBanner/HeroBanner";
-import MovieRow from "../../components/movieRow/MovieRow";
-import Top10Row from "../../components/topTenRow/TopTenRow";
+import MovieRow from '../../components/movieRow/MovieRow';
+import './Series.css'
+import HeroBanner from '../../components/heroBanner/HeroBanner';
 
-const Home = () => {
-  const [loNuevoEnNetflix, setLoNuevoEnNetflix] = useState([]);
+const Series = () => {
+
   const [animeSeries, setAnimeSeries] = useState([]);
   const [koreanDramas, setKoreanDramas] = useState([]);
   const [spanishSeries, setSpanishSeries] = useState([]);
@@ -26,16 +22,14 @@ const Home = () => {
   const [womenSeries, setWomenSeries] = useState([]);
   const [americanSeries, setAmericanSeries] = useState([]);
   const [miniseries, setMiniseries] = useState([]);
-  const [documentaries, setDocumentaries] = useState([]);
   const [epicWorldSeries, setEpicWoroldSeries] = useState([]);
-  const [realityShows, setRealityShows] = useState([]);
 
-   const backgroundImage = "https://image.tmdb.org/t/p/original/d0dRxEmbrYbkeJql4j2DDDYEyN.jpg.jpg";
-   const title = 'One Piece';
-   const description = 'Luffy y su tripulación navegan por mares peligrosos en busca del tesoro más grande del mundo: el One Piece. ¡Aventura, risas y mucha acción!';
+const backgroundImage = "https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYEQypROD7P.jpg";
+const title = "Stranger Things";
+const description = "Un grupo de niños en un pequeño pueblo descubre un oscuro experimento del gobierno, fuerzas sobrenaturales y una niña misteriosa. ¿Listos para el viaje al Upside Down?";
+
 
   useEffect(() => {
-    getNowPlaying().then(setLoNuevoEnNetflix);
     getAnimeSeries().then(setAnimeSeries);
     getKoreanDramas().then(setKoreanDramas);
     getSpanishSeries().then(setSpanishSeries);
@@ -43,31 +37,24 @@ const Home = () => {
     getWomenLedSeries().then(setWomenSeries);
     getAmericanDramaSeries().then(setAmericanSeries);
     getMiniseries().then(setMiniseries);
-    getDocumentaries().then(setDocumentaries);
     getEpicWorldsSeries().then(setEpicWoroldSeries);
-    getRealityShows().then(setRealityShows);
   }, []);
-
   return (
-    <div className="home-container">
-      <HeroBanner 
-      backgroundImage={backgroundImage}
-      title={title}
-      description={description}/>
-      <MovieRow title="Lo nuevo en Netflix" movies={loNuevoEnNetflix} />
+      <div className="series-container">
+        <HeroBanner
+        backgroundImage={backgroundImage}
+        title={title}
+        description={description}/>
       <MovieRow title="Series de anime" movies={animeSeries} />
       <MovieRow title="Series dramáticas coreanas" movies={koreanDramas} />
       <MovieRow title="Series en español " movies={spanishSeries} />
-      <Top10Row />
       <MovieRow title="Series premiadas" movies={awardSeries} />
       <MovieRow title="Series con mujeres protagonistas" movies={womenSeries} />
       <MovieRow title="Series dramáticas de EE. UU." movies={americanSeries} />
       <MovieRow title="Miniseries" movies={miniseries} />
-      <MovieRow title="Documentarios" movies={documentaries} />
       <MovieRow title="Mundos épicos" movies={epicWorldSeries} />
-      <MovieRow title="Reality shows" movies={realityShows} />
     </div>
-  );
+    );
 };
 
-export default Home;
+export default Series;

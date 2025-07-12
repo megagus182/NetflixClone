@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css";
+import "./Peliculas.css";
 import {
   getNowPlaying,
   getAnimeSeries,
@@ -17,7 +17,7 @@ import HeroBanner from "../../components/heroBanner/HeroBanner";
 import MovieRow from "../../components/movieRow/MovieRow";
 import Top10Row from "../../components/topTenRow/TopTenRow";
 
-const Home = () => {
+const Peliculas = () => {
   const [loNuevoEnNetflix, setLoNuevoEnNetflix] = useState([]);
   const [animeSeries, setAnimeSeries] = useState([]);
   const [koreanDramas, setKoreanDramas] = useState([]);
@@ -30,9 +30,11 @@ const Home = () => {
   const [epicWorldSeries, setEpicWoroldSeries] = useState([]);
   const [realityShows, setRealityShows] = useState([]);
 
-   const backgroundImage = "https://image.tmdb.org/t/p/original/d0dRxEmbrYbkeJql4j2DDDYEyN.jpg.jpg";
-   const title = 'One Piece';
-   const description = 'Luffy y su tripulación navegan por mares peligrosos en busca del tesoro más grande del mundo: el One Piece. ¡Aventura, risas y mucha acción!';
+  const backgroundImage =
+    "https://image.tmdb.org/t/p/original/mbm8k3GFhXS0ROd9AD1gqYbIFbM.jpg";
+  const title = "The Irishman";
+  const description =
+    "Frank Sheeran, veterano de guerra convertido en sicario, recuerda los secretos que guardó sobre el crimen organizado. Una historia épica de lealtad, traición y poder.";
 
   useEffect(() => {
     getNowPlaying().then(setLoNuevoEnNetflix);
@@ -49,11 +51,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-container">
-      <HeroBanner 
-      backgroundImage={backgroundImage}
-      title={title}
-      description={description}/>
+    <div className="movies-container">
+      <HeroBanner
+        backgroundImage={backgroundImage}
+        title={title}
+        description={description}
+      />
       <MovieRow title="Lo nuevo en Netflix" movies={loNuevoEnNetflix} />
       <MovieRow title="Series de anime" movies={animeSeries} />
       <MovieRow title="Series dramáticas coreanas" movies={koreanDramas} />
@@ -70,4 +73,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Peliculas;

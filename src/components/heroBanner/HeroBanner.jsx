@@ -1,15 +1,19 @@
 import React from 'react';
 import './HeroBanner.css';
-import { FaInfoCircle, FaPlayCircle  } from "react-icons/fa";
+import { FaInfoCircle, FaPlayCircle } from "react-icons/fa";
 
-const HeroBanner = () => {
+const HeroBanner = ( { backgroundImage, title, description } ) => {
+
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="overlay"></div>
       <div className="hero-content">
-        <h1 className="hero-title">The Witcher</h1>
+        <h1 className="hero-title">{title}</h1>
         <p className="hero-description">
-          Un cazador de monstruos mutado lucha por encontrar su lugar en un mundo donde las personas suelen ser más perversas que las bestias.
+          {description}
         </p>
         <div className="hero-buttons">
           <button className="btn play"><FaPlayCircle /> Reproducir</button>

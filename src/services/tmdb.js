@@ -17,11 +17,11 @@ export const getNowPlaying = async () => {
   return res.data.results;
 };
 
-export const getThrillerSeries = async () => {
+export const getDocumentaries  = async () => {
   const res = await axios.get(
-    `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=53&sort_by=popularity.desc`
+    `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=99&sort_by=popularity.desc`
   );
-  return res.data.results;
+  return res.data.results.slice(5, 15);
 };
 
 export const getEpicWorldsSeries = async () => {
