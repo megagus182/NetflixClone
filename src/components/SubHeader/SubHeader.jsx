@@ -12,6 +12,7 @@ const SubHeader = ({
     const [selectedCategory, setSelectedCategory] = useState("");
     console.log("Seleccionaste la categoría:", selectedCategory);
     const [sortType, setSortType] = useState("");
+    
   return (
     <div className="sub-header">
       <div className="gallery-header">
