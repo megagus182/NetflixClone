@@ -15,7 +15,7 @@ Este es un clon de Netflix hecho con React. Tiene como objetivo practicar consum
 
 - [x] Estructura base del proyecto
 - [ ] Autenticación con Firebase
-- [ ] Página de inicio con carruseles
+- [x] Página de inicio con carruseles
 - [ ] Página de detalles de películas
 - [ ] Responsive design
-- [ ] Despliegue en Vercel/Netlify
+- [ ] Despliegue en Netlify

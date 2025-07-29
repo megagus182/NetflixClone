@@ -10,12 +10,55 @@ export const getTop10Movies = async ()=>{
   return res.data.results.slice(0, 10);
 }
 
+export const getTopRatedMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`);
+  return res.data.results;
+};
+
 export const getNowPlaying = async () => {
   const res = await axios.get(
     `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
   );
   return res.data.results;
 };
+
+export const getTrendingMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
+  return res.data.results;
+};
+
+export const getActionMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=28&sort_by=popularity.desc`);
+  return res.data.results;
+};
+
+export const getComedyMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=35&sort_by=popularity.desc`);
+  return res.data.results;
+};
+
+export const getRomanceMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749&sort_by=popularity.desc`);
+  return res.data.results;
+};
+
+export const getHorrorMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=27&sort_by=popularity.desc`);
+  return res.data.results;
+};
+
+export const getAnimatedMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=16&sort_by=popularity.desc`);
+  return res.data.results;
+};
+
+export const getDocumentaryMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=99&sort_by=popularity.desc`);
+  return res.data.results;
+};
+
+
+//
 
 export const getDocumentaries  = async () => {
   const res = await axios.get(

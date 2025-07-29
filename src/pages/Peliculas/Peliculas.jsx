@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./Peliculas.css";
 import {
   getNowPlaying,
-  getAnimeSeries,
-  getKoreanDramas,
-  getSpanishSeries,
-  getAwardWinningSeries,
-  getWomenLedSeries,
-  getAmericanDramaSeries,
-  getMiniseries,
-  getDocumentaries,
-  getEpicWorldsSeries,
-  getRealityShows,
+  getTrendingMovies,
+  getTopRatedMovies,
+  getActionMovies,
+  getComedyMovies,
+  getRomanceMovies,
+  getHorrorMovies,
+  getAnimatedMovies,
+  getDocumentaryMovies,
 } from "../../services/tmdb";
 import HeroBanner from "../../components/heroBanner/HeroBanner";
 import MovieRow from "../../components/movieRow/MovieRow";
@@ -19,16 +17,19 @@ import Top10Row from "../../components/topTenRow/TopTenRow";
 
 const Peliculas = () => {
   const [loNuevoEnNetflix, setLoNuevoEnNetflix] = useState([]);
-  const [animeSeries, setAnimeSeries] = useState([]);
-  const [koreanDramas, setKoreanDramas] = useState([]);
-  const [spanishSeries, setSpanishSeries] = useState([]);
-  const [awardSeries, setAwardSeries] = useState([]);
-  const [womenSeries, setWomenSeries] = useState([]);
-  const [americanSeries, setAmericanSeries] = useState([]);
-  const [miniseries, setMiniseries] = useState([]);
-  const [documentaries, setDocumentaries] = useState([]);
-  const [epicWorldSeries, setEpicWoroldSeries] = useState([]);
-  const [realityShows, setRealityShows] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [actionMovies, setActionMovies] = useState([]);
+  const [comedyMovies, setComedyMovies] = useState([]);
+  const [romanceMovies, setRomanceMovies] = useState([]);
+  const [horrorMovies, setHorrorMovies] = useState([]);
+  const [animatedMovies, setAnimatedMovies] = useState([]);
+  const [documentaryMovies, setDocumentaryMovies] = useState([]);
+
+  // ✅ Filtro: solo películas que tienen imagen
+  const filtrarContenidoConImagen = (lista) =>
+    lista.filter(item => item.backdrop_path);
+
 
   const backgroundImage =
     "https://image.tmdb.org/t/p/original/mbm8k3GFhXS0ROd9AD1gqYbIFbM.jpg";
@@ -37,17 +38,15 @@ const Peliculas = () => {
     "Frank Sheeran, veterano de guerra convertido en sicario, recuerda los secretos que guardó sobre el crimen organizado. Una historia épica de lealtad, traición y poder.";
 
   useEffect(() => {
-    getNowPlaying().then(setLoNuevoEnNetflix);
-    getAnimeSeries().then(setAnimeSeries);
-    getKoreanDramas().then(setKoreanDramas);
-    getSpanishSeries().then(setSpanishSeries);
-    getAwardWinningSeries().then(setAwardSeries);
-    getWomenLedSeries().then(setWomenSeries);
-    getAmericanDramaSeries().then(setAmericanSeries);
-    getMiniseries().then(setMiniseries);
-    getDocumentaries().then(setDocumentaries);
-    getEpicWorldsSeries().then(setEpicWoroldSeries);
-    getRealityShows().then(setRealityShows);
+    getNowPlaying().then(res => setLoNuevoEnNetflix(filtrarContenidoConImagen(res)));
+    getTrendingMovies().then(res => setTrendingMovies(filtrarContenidoConImagen(res)));
+    getTopRatedMovies().then(res => setTopRatedMovies(filtrarContenidoConImagen(res)));
+    getActionMovies().then(res => setActionMovies(filtrarContenidoConImagen(res)));
+    getComedyMovies().then(res => setComedyMovies(filtrarContenidoConImagen(res)));
+    getRomanceMovies().then(res => setRomanceMovies(filtrarContenidoConImagen(res)));
+    getHorrorMovies().then(res => setHorrorMovies(filtrarContenidoConImagen(res)));
+    getAnimatedMovies().then(res => setAnimatedMovies(filtrarContenidoConImagen(res)));
+    getDocumentaryMovies().then(res => setDocumentaryMovies(filtrarContenidoConImagen(res)));
   }, []);
 
   return (
@@ -58,17 +57,15 @@ const Peliculas = () => {
         description={description}
       />
       <MovieRow title="Lo nuevo en Netflix" movies={loNuevoEnNetflix} />
-      <MovieRow title="Series de anime" movies={animeSeries} />
-      <MovieRow title="Series dramáticas coreanas" movies={koreanDramas} />
-      <MovieRow title="Series en español " movies={spanishSeries} />
+      <MovieRow title="Películas en tendencia" movies={trendingMovies} />
+      <MovieRow title="Mejor calificadas" movies={topRatedMovies} />
+      <MovieRow title="Películas de acción" movies={actionMovies} />
       <Top10Row />
-      <MovieRow title="Series premiadas" movies={awardSeries} />
-      <MovieRow title="Series con mujeres protagonistas" movies={womenSeries} />
-      <MovieRow title="Series dramáticas de EE. UU." movies={americanSeries} />
-      <MovieRow title="Miniseries" movies={miniseries} />
-      <MovieRow title="Documentarios" movies={documentaries} />
-      <MovieRow title="Mundos épicos" movies={epicWorldSeries} />
-      <MovieRow title="Reality shows" movies={realityShows} />
+      <MovieRow title="Películas de comedia" movies={comedyMovies} />
+      <MovieRow title="Películas de romance" movies={romanceMovies} />
+      <MovieRow title="Películas de terror" movies={horrorMovies} />
+      <MovieRow title="Películas animadas" movies={animatedMovies} />
+      <MovieRow title="Documentales" movies={documentaryMovies} />
     </div>
   );
 };

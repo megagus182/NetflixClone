@@ -1,15 +1,26 @@
 import React from 'react';
 import './HeroBanner.css';
 import { FaInfoCircle, FaPlayCircle } from "react-icons/fa";
+import SubHeader from '../SubHeader/SubHeader';
 
-const HeroBanner = ( { backgroundImage, title, description } ) => {
+const HeroBanner = ( { backgroundImage, title, description, seccion, onViewChange, showContent = true } ) => {
 
   return (
     <section
       className="hero"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{
+        backgroundImage: showContent ? `url(${backgroundImage})` : "none",
+        backgroundColor: showContent ? "transparent" : "#000"
+      }}
     >
-      <div className="overlay"></div>
+      <div className="overlay">
+      <SubHeader 
+      title = {seccion}
+      onViewChange={onViewChange}
+      />
+      </div>
+            {/* 👇 Solo si showContent está en true se muestra el contenido */}
+      {showContent && (
       <div className="hero-content">
         <h1 className="hero-title">{title}</h1>
         <p className="hero-description">
@@ -20,6 +31,7 @@ const HeroBanner = ( { backgroundImage, title, description } ) => {
           <button className="btn info"><FaInfoCircle /> Más información</button>
         </div>
       </div>
+      )}
     </section>
   );
 };

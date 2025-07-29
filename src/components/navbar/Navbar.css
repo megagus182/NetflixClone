@@ -1,3 +1,9 @@
+@media screen and (min-width: 950px) {
+    .navbar-container .navbar {
+        height: 68px;
+    }
+}
+
 .navbar {
     left: 0;
     position: fixed;

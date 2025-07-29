@@ -30,40 +30,46 @@ const Home = () => {
   const [epicWorldSeries, setEpicWoroldSeries] = useState([]);
   const [realityShows, setRealityShows] = useState([]);
 
-   const backgroundImage = "https://image.tmdb.org/t/p/original/d0dRxEmbrYbkeJql4j2DDDYEyN.jpg.jpg";
-   const title = 'One Piece';
-   const description = 'Luffy y su tripulación navegan por mares peligrosos en busca del tesoro más grande del mundo: el One Piece. ¡Aventura, risas y mucha acción!';
+  // ✅ Función para filtrar por imagen válida
+  const filtrarContenidoConImagen = (lista) =>
+    lista.filter(item => item.backdrop_path);
+
+  const backgroundImage = "https://image.tmdb.org/t/p/original/d0dRxEmbrYbkeJql4j2DDDYEyN.jpg";
+  const title = "One Piece";
+  const description =
+    "Luffy y su tripulación navegan por mares peligrosos en busca del tesoro más grande del mundo: el One Piece. ¡Aventura, risas y mucha acción!";
 
   useEffect(() => {
-    getNowPlaying().then(setLoNuevoEnNetflix);
-    getAnimeSeries().then(setAnimeSeries);
-    getKoreanDramas().then(setKoreanDramas);
-    getSpanishSeries().then(setSpanishSeries);
-    getAwardWinningSeries().then(setAwardSeries);
-    getWomenLedSeries().then(setWomenSeries);
-    getAmericanDramaSeries().then(setAmericanSeries);
-    getMiniseries().then(setMiniseries);
-    getDocumentaries().then(setDocumentaries);
-    getEpicWorldsSeries().then(setEpicWoroldSeries);
-    getRealityShows().then(setRealityShows);
+    getNowPlaying().then(res => setLoNuevoEnNetflix(filtrarContenidoConImagen(res)));
+    getAnimeSeries().then(res => setAnimeSeries(filtrarContenidoConImagen(res)));
+    getKoreanDramas().then(res => setKoreanDramas(filtrarContenidoConImagen(res)));
+    getSpanishSeries().then(res => setSpanishSeries(filtrarContenidoConImagen(res)));
+    getAwardWinningSeries().then(res => setAwardSeries(filtrarContenidoConImagen(res)));
+    getWomenLedSeries().then(res => setWomenSeries(filtrarContenidoConImagen(res)));
+    getAmericanDramaSeries().then(res => setAmericanSeries(filtrarContenidoConImagen(res)));
+    getMiniseries().then(res => setMiniseries(filtrarContenidoConImagen(res)));
+    getDocumentaries().then(res => setDocumentaries(filtrarContenidoConImagen(res)));
+    getEpicWorldsSeries().then(res => setEpicWoroldSeries(filtrarContenidoConImagen(res)));
+    getRealityShows().then(res => setRealityShows(filtrarContenidoConImagen(res)));
   }, []);
 
   return (
     <div className="home-container">
-      <HeroBanner 
-      backgroundImage={backgroundImage}
-      title={title}
-      description={description}/>
+      <HeroBanner
+        backgroundImage={backgroundImage}
+        title={title}
+        description={description}
+      />
       <MovieRow title="Lo nuevo en Netflix" movies={loNuevoEnNetflix} />
       <MovieRow title="Series de anime" movies={animeSeries} />
       <MovieRow title="Series dramáticas coreanas" movies={koreanDramas} />
-      <MovieRow title="Series en español " movies={spanishSeries} />
+      <MovieRow title="Series en español" movies={spanishSeries} />
       <Top10Row />
       <MovieRow title="Series premiadas" movies={awardSeries} />
       <MovieRow title="Series con mujeres protagonistas" movies={womenSeries} />
       <MovieRow title="Series dramáticas de EE. UU." movies={americanSeries} />
       <MovieRow title="Miniseries" movies={miniseries} />
-      <MovieRow title="Documentarios" movies={documentaries} />
+      <MovieRow title="Documentales" movies={documentaries} />
       <MovieRow title="Mundos épicos" movies={epicWorldSeries} />
       <MovieRow title="Reality shows" movies={realityShows} />
     </div>

@@ -1,0 +1,334 @@
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+@media screen and (min-width: 950px) {
+  .sub-header {
+    height: 68px;
+  }
+}
+
+.sub-header {
+  align-items: center;
+  display: flex;
+  height: 68px;
+  left: 0;
+  padding: 0 4%;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+
+.gallery-header {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+.title {
+  font-size: 2.5rem;
+}
+
+.genre-details {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.genreTitle {
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 38px;
+  margin-right: 15px;
+}
+
+.subgenres {
+  margin: 0 30px;
+}
+
+.nfDropDown.theme-lakira .label {
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #000;
+  border: 1px solid hsla(0, 0%, 100%, 0.9);
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 25px;
+  letter-spacing: 1px;
+  line-height: 1.5rem;
+  padding-left: 10px;
+  padding-right: 30px;
+  position: relative;
+}
+
+.nfDropDown.theme-lakira.open {
+  z-index: 1;
+}
+
+.arrow {
+  border-color: #fff transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  height: 0;
+  position: absolute;
+  right: 10px;
+  top: 44%;
+  width: 0;
+}
+
+.nfDropDown.theme-lakira .sub-menu {
+  font-size: 14px;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+  top: 2.5rem;
+  z-index: 2;
+}
+.aro-gallery-header .subgenres .sub-menu {
+  padding: 5px 0;
+  z-index: 20;
+}
+.sub-menu.theme-lakira {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid hsla(0, 0%, 100%, 0.15);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: default;
+  font-size: 13px;
+  line-height: 21px;
+  opacity: 0;
+  position: absolute;
+  top: 71px;
+}
+
+.nfDropDown.theme-lakira .sub-menu .sub-menu-list,
+.nfDropDown.theme-lakira .sub-menu .sub-menu-list-special {
+  margin: 0;
+  padding: 5px 0;
+}
+.sub-menu.theme-lakira .sub-menu-list-special.multi-column,
+.sub-menu.theme-lakira .sub-menu-list.multi-column {
+  display: table-cell;
+}
+.sub-menu.theme-lakira .sub-menu-list,
+.sub-menu.theme-lakira .sub-menu-list-special {
+  cursor: default;
+  height: auto;
+  padding: 1.1rem;
+}
+.sub-menu.theme-lakira a,
+.sub-menu.theme-lakira div,
+.sub-menu.theme-lakira li,
+.sub-menu.theme-lakira span,
+.sub-menu.theme-lakira ul {
+  box-sizing: border-box;
+}
+user agent stylesheet ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+.sub-menu.theme-lakira .sub-menu-item,
+.sub-menu.theme-lakira .sub-menu-item-special {
+  cursor: default;
+  display: block;
+  line-height: 24px;
+}
+.sub-menu.theme-lakira a,
+.sub-menu.theme-lakira div,
+.sub-menu.theme-lakira li,
+.sub-menu.theme-lakira span,
+.sub-menu.theme-lakira ul {
+  box-sizing: border-box;
+}
+user agent stylesheet li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  unicode-bidi: isolate;
+}
+.sub-menu.theme-lakira .sub-menu-list,
+.sub-menu.theme-lakira .sub-menu-list-special {
+  cursor: default;
+  height: auto;
+  padding: 1.1rem;
+}
+user agent stylesheet ul {
+  list-style-type: disc;
+}
+
+.nfDropDown.theme-lakira .sub-menu .sub-menu-item a {
+  padding: 1px 20px 1px 10px;
+}
+.nfDropDown.theme-lakira .sub-menu .sub-menu-link {
+  display: inline-block;
+  padding: 1px 0;
+  width: 100%;
+}
+.aro-gallery-header .subgenres .sub-menu .sub-menu-link {
+  white-space: nowrap;
+}
+.sub-menu.theme-lakira .sub-menu-link {
+  color: #fff;
+  display: inline-block;
+  text-transform: none;
+  width: 100%;
+}
+.sub-menu.theme-lakira a,
+.sub-menu.theme-lakira div,
+.sub-menu.theme-lakira li,
+.sub-menu.theme-lakira span,
+.sub-menu.theme-lakira ul {
+  box-sizing: border-box;
+}
+a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+a {
+  background-color: transparent;
+}
+user agent stylesheet a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sub-menu.theme-lakira .sub-menu-list.multi-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px 20px;
+}
+
+.aro-toggle {
+  display: flex;
+  margin-left: auto;
+  z-index: 2;
+}
+
+.aro-toggle.grid-selected .aro-row-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  border-right: none;
+  cursor: pointer;
+  opacity: 0.65;
+}
+.aro-toggle .aro-grid-toggle,
+.aro-toggle .aro-row-toggle {
+  background-color: transparent;
+  padding: 0;
+}
+.aro-toggle .aro-row-toggle {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #fff;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  width: 44px;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button,
+select {
+  text-transform: none;
+}
+button {
+  overflow: visible;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.aro-toggle .aro-grid {
+    background: rgba(0, 0, 0, .1);
+    border: 1px solid #fff;
+    border-left: none;
+    display: flex
+;
+    opacity: .65;
+    width: auto;
+}
+
+.aro-toggle .aro-grid-toggle, .aro-toggle .aro-row-toggle {
+    background-color: transparent;
+    padding: 0;
+}
+.aro-toggle .aro-grid-toggle {
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    height: 28px;
+    justify-content: center;
+    width: 44px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+
+
+.suggestions-box .label {
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #000;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 28px;
+  line-height: 1.5rem;
+  padding-left: 10px;
+  padding-right: 30px;
+  position: relative;
+}
+
+/* Animación opcional */
+@keyframes slideIn {
+    from {
+        transform: translateX(30px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
