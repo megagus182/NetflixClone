@@ -35,5 +35,6 @@ const HeroBanner = ( { backgroundImage, title, description, seccion, onViewChang
     </section>
   );
 };
+  
 
 export default HeroBanner;
