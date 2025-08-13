@@ -10,7 +10,8 @@ const HeroBanner = ( { backgroundImage, title, description, seccion, onViewChang
       className="hero"
       style={{
         backgroundImage: showContent ? `url(${backgroundImage})` : "none",
-        backgroundColor: showContent ? "transparent" : "#000"
+        backgroundColor: showContent ? "transparent" : "rgb(20, 20, 20);",
+        height: showContent ? "80vh" : "0vh"
       }}
     >
       <div className="overlay">
@@ -31,7 +32,8 @@ const HeroBanner = ( { backgroundImage, title, description, seccion, onViewChang
           <button className="btn info"><FaInfoCircle /> Más información</button>
         </div>
       </div>
-      )}
+      )
+      }
     </section>
   );
 };

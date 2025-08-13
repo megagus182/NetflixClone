@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./SubHeader.css";
-import { FaAlignLeft, FaThLarge } from "react-icons/fa";
 
 const SubHeader = ({
   title,
