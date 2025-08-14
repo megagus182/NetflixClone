@@ -304,7 +304,78 @@ button, input, optgroup, select, textarea {
     margin: 0;
 }
 
+.nfDropDown.theme-aro {
+  min-width: 240px;
+  position: relative;
+  text-align: left;
+}
 
+.nfDropDown.theme-aro .label {
+  background-color: #000;
+  border: 1px solid hsla(0, 0%, 100%, 0.9);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 30px 5px 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.nfDropDown.theme-aro .arrow {
+  border-color: #fff transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nfDropDown.theme-aro .sub-menu {
+  position: fixed;       /* clave: se sale del flujo normal */
+  top: 120px;             /* ajusta según la altura de tu sub-header */
+  left: 90%;             /* centrado horizontal */
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 1px solid #fff;
+  z-index: 999;          /* siempre encima */
+  padding: 0.5rem 0;
+  min-width: 200px;
+  border-radius: 4px;
+}
+
+/* Opcional: animación */
+.nfDropDown.theme-aro.open .sub-menu {
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.nfDropDown.theme-aro.open .sub-menu {
+  opacity: 1;
+}
+
+.nfDropDown.theme-aro .sub-menu-list {
+  list-style: none; /* sin bullets */
+  margin: 0;
+  padding: 0;
+}
+
+.nfDropDown.theme-aro .sub-menu-item {
+  display: block;
+}
+
+.nfDropDown.theme-aro .sub-menu-link {
+  display: block;
+  padding: 8px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nfDropDown.theme-aro .sub-menu-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
 .suggestions-box .label {
   -moz-appearance: none;
@@ -322,6 +393,39 @@ button, input, optgroup, select, textarea {
   padding-right: 30px;
   position: relative;
 }
+
+/* Dropdown de géneros */
+.nfDropDown.theme-lakira .sub-menu {
+  position: fixed;       
+  top: 112px;             
+  left: 35%;             
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 1px solid #fff;
+  z-index: 999;
+  padding: 0.5rem 0;
+  min-width: 300px;
+  border-radius: 4px;
+}
+
+/* Animación opcional */
+.nfDropDown.theme-lakira.open .sub-menu {
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Opciones de género */
+.sub-menu.theme-lakira .sub-menu-item .sub-menu-link {
+  display: block;
+  width: 100%;
+  padding: 5px 15px;
+  color: #fff;
+  cursor: pointer;
+}
+.sub-menu.theme-lakira .sub-menu-item .sub-menu-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 
 /* Animación opcional */
 @keyframes slideIn {

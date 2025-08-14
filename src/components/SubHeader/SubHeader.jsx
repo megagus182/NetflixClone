@@ -12,26 +12,41 @@ const SubHeader = ({
   const [selectedCategory, setSelectedCategory] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [activeSort, setActiveSort] = useState("sugerencias");
+    const [activeFilter, setActiveFilter] = useState("Sugerencias para ti");
+  const filters = ["Sugerencias para ti", "Año de lanzamiento", "A-Z", "Z-A"];
 
-const handleGridClick = () => {
-  if (onViewChange) onViewChange(false); // 🔥 oculta Hero
-  if(!showSuggestions)
-  setShowSuggestions(!showSuggestions);
-};
 
-const handleRowClick = () => {
-  if (onViewChange) onViewChange(true); // 🔥 muestra Hero
-  if(showSuggestions)
-  setShowSuggestions(!showSuggestions);
-};
+  const handleGridClick = () => {
+    if (onViewChange) onViewChange(false);
+    setShowSuggestions(!showSuggestions);
+  };
+
+  const handleRowClick = () => {
+    if (onViewChange) onViewChange(true);
+    setShowSuggestions(false);
+  };
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const handleCategorySelect = (id) => {
     setSelectedCategory(id);
     if (onCategoryChange) onCategoryChange(id);
-    setMenuOpen(false); // cerrar el menú
+    setMenuOpen(false);
   };
+
+  const handleSortSelect = (sortId) => {
+    setActiveSort(sortId);
+    if (onSortChange) onSortChange(sortId);
+    setShowSuggestions(false);
+  };
+
+  const handleFilterSelect = (filter) => {
+    setActiveFilter(filter);
+    if(onSortChange) onSortChange(filter);
+    setShowSuggestions(false);
+  };
+
 
   const categories = [
     { id: "", name: "Todos" },
@@ -60,6 +75,13 @@ const handleRowClick = () => {
     { id: "89811", name: "Thrillers" },
   ];
 
+  const sortOptions = [
+    { id: "sugerencias", name: "Sugerencias para ti" },
+    { id: "anio", name: "Año de lanzamiento" },
+    { id: "az", name: "A-Z" },
+    { id: "za", name: "Z-A" }
+  ];
+
   return (
     <div>
       <div className="sub-header">
@@ -72,9 +94,7 @@ const handleRowClick = () => {
                   <div
                     label="Géneros"
                     cols="3"
-                    className={`nfDropDown ${
-                      menuOpen ? "open" : ""
-                    } theme-lakira`}
+                    className={`nfDropDown ${menuOpen ? "open" : ""} theme-lakira`}
                   >
                     <div
                       className="label"
@@ -96,11 +116,7 @@ const handleRowClick = () => {
                       >
                         <ul className="sub-menu-list multi-column">
                           {categories.map((cat) => (
-                            <li
-                              className="sub-menu-item"
-                              key={cat.id}
-                              role="none"
-                            >
+                            <li className="sub-menu-item" key={cat.id} role="none">
                               <span
                                 className="sub-menu-link"
                                 onClick={() => handleCategorySelect(cat.id)}
@@ -119,69 +135,65 @@ const handleRowClick = () => {
           </div>
         </div>
 
-        <div class="aro-toggle">
+        <div className="aro-toggle">
           <button
-            class="aro-row-toggle"
+            className="aro-row-toggle"
             aria-label="Vista de lista"
-            tabindex="0"
+            tabIndex="0"
             onClick={handleRowClick}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              data-icon="ListStandard"
-              aria-hidden="true"
-              class="svg-icon svg-icon-rows"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M24 6H0V4H24V6ZM24 18V20H0V18H24ZM0 13H12V11H0V13Z"
-                fill="currentColor"
-              ></path>
+            {/* Ícono lista */}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" role="img" viewBox="0 0 24 24" width="24" height="24" data-icon="ListStandard" aria-hidden="true" className="svg-icon svg-icon-rows">
+              <path fillRule="evenodd" clipRule="evenodd" d="M24 6H0V4H24V6ZM24 18V20H0V18H24ZM0 13H12V11H0V13Z" fill="currentColor"></path>
             </svg>
           </button>
-          <div class="aro-grid">
-<button className="grid" onClick={handleGridClick}
+
+          <div className="aro-grid">
+            {!showSuggestions && (
+            <button
+              onClick={handleGridClick}
               aria-label="Vista de cuadrícula"
-              class="aro-grid-toggle"
-              tabindex="0"
+              className="aro-grid-toggle"
+              tabIndex="0"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                data-icon="GridFillStandard"
-                aria-hidden="true"
-                class="svg-icon svg-icon-grid"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M1 3C0.447715 3 0 3.44772 0 4V10C0 10.5523 0.447715 11 1 11H10C10.5523 11 11 10.5523 11 10V4C11 3.44772 10.5523 3 10 3H1ZM1 13C0.447715 13 0 13.4477 0 14V20C0 20.5523 0.447715 21 1 21H10C10.5523 21 11 20.5523 11 20V14C11 13.4477 10.5523 13 10 13H1ZM13 4C13 3.44772 13.4477 3 14 3H23C23.5523 3 24 3.44772 24 4V10C24 10.5523 23.5523 11 23 11H14C13.4477 11 13 10.5523 13 10V4ZM14 13C13.4477 13 13 13.4477 13 14V20C13 20.5523 13.4477 21 14 21H23C23.5523 21 24 20.5523 24 20V14C24 13.4477 23.5523 13 23 13H14Z"
-                  fill="currentColor"
-                ></path>
+              {/* Ícono grid */}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" role="img" viewBox="0 0 24 24" width="24" height="24" data-icon="GridFillStandard" aria-hidden="true" className="svg-icon svg-icon-grid">
+                <path fillRule="evenodd" clipRule="evenodd" d="M1 3C0.447715 3 0 3.44772 0 4V10C0 10.5523 0.447715 11 1 11H10C10.5523 11 11 10.5523 11 10V4C11 3.44772 10.5523 3 10 3H1ZM1 13C0.447715 13 0 13.4477 0 14V20C0 20.5523 0.447715 21 1 21H10C10.5523 21 11 20.5523 11 20V14C11 13.4477 10.5523 13 10 13H1ZM13 4C13 3.44772 13.4477 3 14 3H23C23.5523 3 24 3.44772 24 4V10C24 10.5523 23.5523 11 23 11H14C13.4477 11 13 10.5523 13 10V4ZM14 13C13.4477 13 13 13.4477 13 14V20C13 20.5523 13.4477 21 14 21H23C23.5523 21 24 20.5523 24 20V14C24 13.4477 23.5523 13 23 13H14Z" fill="currentColor"></path>
               </svg>
             </button>
+            )}
             {showSuggestions && (
-  <div className="suggestions-box">
-    <div className="label">
-      Sugerencias para ti    <span className="arrow"></span>
-    </div>
-  </div>
-)}
-
+              <div className={`nfDropDown theme-aro ${showSuggestions ? "open" : ""}`}>
+            <div className="label" onClick={() => setShowSuggestions(!showSuggestions)}>
+              {activeFilter}
+              <span className="arrow"></span>
+            </div>
+            {showSuggestions && (
+              <div className="sub-menu theme-aro" role="menu">
+                <ul className="sub-menu-list">
+                  {filters.map((filter) => (
+                    <li className="sub-menu-item" key={filter} onClick={() => handleFilterSelect(filter)}>
+                      <a
+                        className="sub-menu-link"
+                        style={{
+                          fontWeight: activeFilter === filter ? "bold" : "normal",
+                          color: activeFilter === filter ? "#fff" : "#ccc",
+                          background: activeFilter === filter ? "rgba(255,255,255,0.1)" : "transparent",
+                        }}
+                      >
+                        {filter}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+        </div>
+            )}
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 

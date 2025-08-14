@@ -10,7 +10,7 @@ const HeroBanner = ( { backgroundImage, title, description, seccion, onViewChang
       className="hero"
       style={{
         backgroundImage: showContent ? `url(${backgroundImage})` : "none",
-        backgroundColor: showContent ? "transparent" : "rgb(20, 20, 20);",
+        //backgroundColor: showContent ? "transparent" : "rgb(20, 20, 20);",
         height: showContent ? "80vh" : "0vh"
       }}
     >
@@ -20,7 +20,6 @@ const HeroBanner = ( { backgroundImage, title, description, seccion, onViewChang
       onViewChange={onViewChange}
       />
       </div>
-            {/* 👇 Solo si showContent está en true se muestra el contenido */}
       {showContent && (
       <div className="hero-content">
         <h1 className="hero-title">{title}</h1>
